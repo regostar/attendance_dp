@@ -9,32 +9,56 @@ n = int(input())
 ways = [0 for i in range(n+1)]
 ways[0] = 1
 
+# def compute_ways(n):
+#     global ways
+#     if n < 0:
+#         return 0
+#     elif ways[n] !=0:
+#         return ways[n]
+#     else:
+#         tot = 0
+#         if n-1 >=0 and ways[n-1] !=0:
+#             tot += ways[n-1]
+#         else:
+#             tot += compute_ways(n-1)
+#         if n-2 >=0 and ways[n-2] !=0:
+#             tot += ways[n-2]
+#         else:
+#             tot += compute_ways(n-2)
+#         if n-3 >=0 and ways[n-3] !=0:
+#             tot += ways[n-3]
+#         else:
+#             tot += compute_ways(n-3)
+#         if n-4 >=0 and ways[n-4] !=0:
+#             tot += ways[n-4]
+#         else:
+#             tot += compute_ways(n-4)
+#         ways[n] = tot
+#         # ways[n] = (compute_ways(n-1) + compute_ways(n-2) + compute_ways(n-3) + compute_ways(n-4)) % 10**9
+#     return ways[n]
+
+
 def compute_ways(n):
     global ways
-    if n < 0:
-        return 0
-    elif ways[n] !=0:
-        return ways[n]
-    else:
-        tot = 0
-        if n-1 >=0 and ways[n-1] !=0:
-            tot += ways[n-1]
-        else:
-            tot += compute_ways(n-1)
-        if n-2 >=0 and ways[n-2] !=0:
-            tot += ways[n-2]
-        else:
-            tot += compute_ways(n-2)
-        if n-3 >=0 and ways[n-3] !=0:
-            tot += ways[n-3]
-        else:
-            tot += compute_ways(n-3)
-        if n-4 >=0 and ways[n-4] !=0:
-            tot += ways[n-4]
-        else:
-            tot += compute_ways(n-4)
-        ways[n] = tot
-        # ways[n] = (compute_ways(n-1) + compute_ways(n-2) + compute_ways(n-3) + compute_ways(n-4)) % 10**9
+    if n == 1:
+        ways[1] = 1
+        return 2
+    if n == 2:
+        ways[1] = 1
+        ways[2] = 2
+        return 2
+    if n == 3:
+        ways[1] = 1
+        ways[2] = 2
+        ways[3] = 4
+        return 4
+    ways[1] = 1
+    ways[2] = 2
+    ways[3] = 4
+    i = 4
+    while i <= n:
+        ways[i] = ways[i-1] + ways[i-2] + ways[i-3] + ways[i-4]
+        i += 1
     return ways[n]
 
 # 1. The number of ways to attend classes over N days.
