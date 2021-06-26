@@ -16,7 +16,25 @@ def compute_ways(n):
     elif ways[n] !=0:
         return ways[n]
     else:
-        ways[n] = compute_ways(n-1) + compute_ways(n-2) + compute_ways(n-3) + compute_ways(n-4)
+        tot = 0
+        if n-1 >=0 and ways[n-1] !=0:
+            tot += ways[n-1]
+        else:
+            tot += compute_ways(n-1)
+        if n-2 >=0 and ways[n-2] !=0:
+            tot += ways[n-2]
+        else:
+            tot += compute_ways(n-2)
+        if n-3 >=0 and ways[n-3] !=0:
+            tot += ways[n-3]
+        else:
+            tot += compute_ways(n-3)
+        if n-4 >=0 and ways[n-4] !=0:
+            tot += ways[n-4]
+        else:
+            tot += compute_ways(n-4)
+        ways[n] = tot
+        # ways[n] = (compute_ways(n-1) + compute_ways(n-2) + compute_ways(n-3) + compute_ways(n-4)) % 10**9
     return ways[n]
 
 # 1. The number of ways to attend classes over N days.
