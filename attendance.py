@@ -9,7 +9,8 @@ n = int(input())
 ways = [0 for i in range(n+1)]
 ways[0] = 1
 
-# def compute_ways(n):
+# def compute_ways(n: int)->int:
+# recursive solution
 #     global ways
 #     if n < 0:
 #         return 0
@@ -38,7 +39,8 @@ ways[0] = 1
 #     return ways[n]
 
 
-def compute_ways(n):
+def compute_ways(n: int) -> int:
+    # iterative solution
     global ways
     if n == 1:
         ways[1] = 1
